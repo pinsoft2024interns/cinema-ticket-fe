@@ -1,0 +1,72 @@
+export const movies = [
+    {
+        id: '1',
+        title: 'Inception',
+        poster_url: 'https://m.media-amazon.com/images/I/51mbW5HwqPL._AC_SY450_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/76979871',
+        description: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
+    },
+    {
+        id: '2',
+        title: 'The Dark Knight',
+        poster_url: 'https://m.media-amazon.com/images/I/51K8ouYrHeL._AC_SY450_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/46136500',
+        description: 'When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.',
+    },
+    {
+        id: '3',
+        title: 'Interstellar',
+        poster_url: 'https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_SY679_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/22439234',
+        description: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
+    },
+    {
+        id: '4',
+        title: 'The Matrix',
+        poster_url: 'https://m.media-amazon.com/images/I/51EG732BV3L._AC_SY445_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/160268488',
+        description: 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.',
+    },
+    {
+        id: '5',
+        title: 'Pulp Fiction',
+        poster_url: 'https://m.media-amazon.com/images/I/71c05lTE03L._AC_SY679_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/29950141',
+        description: 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.',
+    },
+    {
+        id: '6',
+        title: 'The Lord of the Rings: The Fellowship of the Ring',
+        poster_url: 'https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_SY450_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/189789787',
+        description: 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.',
+    },
+    {
+        id: '7',
+        title: 'Fight Club',
+        poster_url: 'https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_SY450_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/38030815',
+        description: 'An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.',
+    },
+    {
+        id: '8',
+        title: 'Forrest Gump',
+        poster_url: 'https://m.media-amazon.com/images/I/61myHyjBDYL._AC_SY679_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/37193729',
+        description: 'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold from the perspective of an Alabama man with an IQ of 75.',
+    },
+    {
+        id: '9',
+        title: 'The Shawshank Redemption',
+        poster_url: 'https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/119914215',
+        description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
+    },
+    {
+        id: '10',
+        title: 'The Godfather',
+        poster_url: 'https://m.media-amazon.com/images/I/51c6S4kGFmL._AC_SY450_.jpg',
+        trailer_url: 'https://player.vimeo.com/video/161367634',
+        description: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
+    }
+];
