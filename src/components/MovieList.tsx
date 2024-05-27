@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
+import '@/components/movies.css';
 
 interface Movie {
-    id: number; // id alanını number olarak güncelledik
+    id: number;
     name: string;
     posterUrl: string;
-    trailerUrl: string;
     description: string;
 }
 
@@ -45,16 +45,19 @@ const MovieList = () => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {movies.map((movie) => (
-                <MovieCard
-                    key={movie.id}
-                    id={movie.id}
-                    title={movie.name}
-                    posterUrl={movie.posterUrl}
-                    description={movie.description}
-                />
-            ))}
+        <div className="container">
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">Popüler</h1>
+            <div className="movie-grid">
+                {movies.map((movie) => (
+                    <MovieCard
+                        key={movie.id}
+                        id={movie.id}
+                        title={movie.name}
+                        posterUrl={movie.posterUrl}
+                        description={movie.description}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

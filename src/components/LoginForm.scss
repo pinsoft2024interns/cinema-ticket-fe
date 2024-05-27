@@ -1,10 +1,10 @@
 .login-form-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
   height: 100vh;
-  background-color: #f3f4f6; /* Daha koyu bir arka plan rengi */
+  background-color: #f3f4f6;
 }
 
 .login-form {

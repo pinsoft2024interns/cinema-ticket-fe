@@ -1,0 +1,58 @@
+
+.container {
+    padding: 1.5rem;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .movie-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.movie-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    max-height: 16rem;
+}
+
+.movie-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.movie-description {
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.movie-link {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.movie-link:hover {
+    text-decoration: underline;
+}

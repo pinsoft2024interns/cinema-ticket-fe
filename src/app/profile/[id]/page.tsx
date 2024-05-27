@@ -1,29 +1,14 @@
 'use client';
 
+import { useReservation } from '@/context/ReservationContext';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 
-interface Reservation {
-    id: number;
-    seatInfo: number[];
-    numberOfPeople: number;
-    price: number;
-    releaseDate: string | null;
-    hallNumber: number;
-    cancel: boolean;
-}
-
-interface User {
-    id: number;
-    email: string;
-    username: string;
-    reservations: Reservation[];
-}
-
 const ProfilePage = () => {
+    const { reservations, cancelReservation } = useReservation();
     const { id } = useParams<{ id: string }>();
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<{ id: number; email: string; username: string } | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -44,7 +29,7 @@ const ProfilePage = () => {
                     }
                 });
                 if (response.ok) {
-                    const data: User = await response.json();
+                    const data = await response.json();
                     setUser(data);
                 } else {
                     const errorText = await response.text();
@@ -67,6 +52,8 @@ const ProfilePage = () => {
     if (loading) return <div className="text-gray-900">Yükleniyor...</div>;
     if (error) return <div className="text-gray-900">{error}</div>;
 
+    const userReservations = reservations.filter(reservation => reservation.userId === parseInt(id, 10));
+
     return (
         <div className="bg-gray-100 min-h-screen">
             <Header />
@@ -78,17 +65,24 @@ const ProfilePage = () => {
                         <p className="text-gray-900 mb-4">Username: {user.username}</p>
                         <h2 className="text-xl font-semibold mb-4 text-gray-900">Rezervasyonlarım</h2>
                         <ul className="list-disc pl-5">
-                            {user.reservations.length === 0 ? (
+                            {userReservations.length === 0 ? (
                                 <p className="text-gray-900">Hiç rezervasyonunuz yok.</p>
                             ) : (
-                                user.reservations.map((reservation, index) => (
+                                userReservations.map((reservation, index) => (
                                     <li key={index} className="text-gray-900 mb-2">
                                         <div>Rezervasyon ID: {reservation.id}</div>
-                                        <div>Koltuk Numaraları: {reservation.seatInfo.join(', ')}</div>
-                                        <div>Kişi Sayısı: {reservation.numberOfPeople}</div>
-                                        <div>Fiyat: {reservation.price} TL</div>
-                                        <div>Salon Numarası: {reservation.hallNumber}</div>
-                                        <div>İptal Durumu: {reservation.cancel ? 'İptal Edildi' : 'Aktif'}</div>
+                                        <div>Koltuk Numaraları: {reservation.seats.map(seat => seat.name).join(', ')}</div>
+                                        <div>Kişi Sayısı: {reservation.seats.length}</div>
+                                        <div>Fiyat: {reservation.totalPrice} TL</div>
+                                        <div>Rezervasyon Durumu: {reservation.status ? 'Aktif' : 'İptal Edildi'}</div>
+                                        {reservation.status && (
+                                            <button
+                                                onClick={() => cancelReservation(reservation.id)}
+                                                className="mt-2 bg-red-500 text-white p-2 rounded"
+                                            >
+                                                İptal Et
+                                            </button>
+                                        )}
                                     </li>
                                 ))
                             )}

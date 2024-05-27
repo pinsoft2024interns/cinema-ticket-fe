@@ -10,7 +10,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState<string>('');
     const router = useRouter();
 
-    console.log("username:", username, "password:", password);
+    // console.log("username:", username, "password:", password);
 
     const loginUser = async (e: React.SyntheticEvent<EventTarget>) => {
         e.preventDefault();
@@ -46,12 +46,13 @@ const LoginForm = () => {
                 console.log('Kullanıcı Token:', userToken);
                 console.log('Kullanıcı ID:', userId);
 
-                // Kullanıcı bilgilerini local storage'a kaydet
+                // kullanıcı bilgilerini local storage'a kaydet
                 localStorage.setItem('user', JSON.stringify(data));
                 localStorage.setItem('userToken', userToken);
 
                 // Profil sayfasına yönlendir
                 router.push(`/profile/${userId}`);
+
             } else {
                 const errorText = await response.text();
                 console.error('Giriş başarısız:', response.statusText, 'Yanıt metni:', errorText);

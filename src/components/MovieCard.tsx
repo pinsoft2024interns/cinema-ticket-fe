@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import '@/components/movies.css';
 
 interface MovieCardProps {
     id: number;
@@ -11,20 +12,20 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ id, title, posterUrl, description }) => {
     return (
-        <div className="bg-white p-4 rounded shadow-md">
-            {posterUrl ? (
+        <div className="movie-card">
+            <div className="w-full h-64 relative mb-4">
                 <Image
                     src={posterUrl}
                     alt={title}
-                    width={300}
-                    height={450}
-                    className="w-full h-64 object-cover mb-4"
+                    layout="fill"
+                    objectFit="contain"
+                    className="rounded"
                 />
-            ) : null}
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">{title}</h2>
-            <p className="text-gray-700 mb-4">{description}</p>
-            <Link href={`/movies/${id}`}>
-                <span className="text-blue-500 hover:underline">Detaylar</span>
+            </div>
+            <h2 className="movie-title">{title}</h2>
+            <p className="movie-description">{description}</p>
+            <Link href={`/movies/${id}`} className="movie-link">
+                Detaylar
             </Link>
         </div>
     );

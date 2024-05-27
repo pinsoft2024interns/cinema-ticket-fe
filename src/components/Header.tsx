@@ -1,6 +1,5 @@
-
-
 import Link from 'next/link';
+import Navbar from './Navbar';
 
 const Header = () => {
     return (
@@ -8,14 +7,7 @@ const Header = () => {
             <h1 className="text-2xl font-bold">
                 <Link href="/">Film Rezervasyon</Link>
             </h1>
-            <nav>
-                <Link href="/login" className="text-blue-300 hover:underline mx-2">
-                    Giriş Yap
-                </Link>
-                <Link href="/signup" className="text-blue-300 hover:underline mx-2">
-                    Üye Ol
-                </Link>
-            </nav>
+            <Navbar />
         </header>
     );
 };

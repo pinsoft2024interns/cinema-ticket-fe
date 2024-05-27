@@ -62,13 +62,26 @@ const MoviePage = () => {
                     <Image
                         src={movie.posterUrl}
                         alt={movie.name}
-                        width={500}
-                        height={750}
-                        className="w-full h-auto rounded mt-4"
-                        style={{ objectFit: 'cover' }}
+                        width={300}
+                        height={450}
                     />
                 ) : null}
                 <p className="text-gray-700 mt-4">{movie.description}</p>
+                {movie.trailerUrl ? (
+                    <div className="mt-4">
+                        <iframe
+                            src={movie.trailerUrl}
+                            width="640"
+                            height="360"
+                            frameBorder="0"
+                            allow="autoplay; fullscreen"
+                            allowFullScreen
+                            title="Movie Trailer"
+                        ></iframe>
+                    </div>
+                ) : (
+                    <p>Trailer mevcut değil.</p>
+                )}
                 <button onClick={handleReservationClick} className="mt-4 bg-blue-500 text-white p-2 rounded">
                     Rezervasyon Yap
                 </button>
