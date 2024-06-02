@@ -9,12 +9,15 @@ const Header = () => {
                 <Link href="/">Film Rezervasyon</Link>
             </h1>
             <nav>
-                <Link href="/login" className="text-blue-300 hover:underline mx-2">
+                {!localStorage.getItem("user") && <Link href="/login" className="text-blue-300 hover:underline mx-2">
                     Giriş Yap
-                </Link>
-                <Link href="/signup" className="text-blue-300 hover:underline mx-2">
+                </Link>}
+                {!localStorage.getItem("user") && <Link href="/signup" className="text-blue-300 hover:underline mx-2">
                     Üye Ol
-                </Link>
+                </Link>}
+                {localStorage.getItem("user") && <Link href={`/profile/${JSON.parse(localStorage.getItem("user") as string).id}`} className="text-blue-300 hover:underline mx-2">
+                    Profil
+                </Link>}
             </nav>
         </header>
     );
