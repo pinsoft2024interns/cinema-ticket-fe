@@ -1,31 +1,32 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Movie } from '../../type';
+import './Movie.scss'
 
-interface MovieCardProps {
-    id: number;
-    title: string;
-    posterUrl: string;
-    description: string;
-}
 
-const MovieCard: React.FC<MovieCardProps> = ({ id, title, posterUrl, description }) => {
+
+const MovieCard: React.FC<Movie> = ({ id, name, base64image, description }) => {
     return (
-        <div className="bg-white p-4 rounded shadow-md">
-            {posterUrl ? (
-                <Image
-                    src={posterUrl}
-                    alt={title}
-                    width={300}
-                    height={450}
-                    className="w-full h-64 object-cover mb-4"
-                />
-            ) : null}
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">{title}</h2>
-            <p className="text-gray-700 mb-4">{description}</p>
-            <Link href={`/movies/${id}`}>
-                <span className="text-blue-500 hover:underline">Detaylar</span>
-            </Link>
+        <div className="movie-card">
+            <div className={'image-container'}>
+                {base64image && (
+                    <Image
+                        src={base64image}
+                        alt={name}
+                        layout="fill"
+                        objectFit="contain"
+                        className="movie-image"
+                    />
+                )}
+            </div>
+            <div className={'content'}>
+                <h2 className="title">{name}</h2>
+                <p className="description">{description}</p>
+                <Link href={`/movies/${id}/showing`}>
+                    <span className="link">Güncel Gösterimler</span>
+                </Link>
+            </div>
         </div>
     );
 };

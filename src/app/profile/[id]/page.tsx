@@ -1,25 +1,11 @@
-'use client';
-
-import { useParams } from 'next/navigation';
+"use client"
 import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
-
-interface Reservation {
-    id: number;
-    seatInfo: number[];
-    numberOfPeople: number;
-    price: number;
-    releaseDate: string | null;
-    hallNumber: number;
-    cancel: boolean;
-}
-
-interface User {
-    id: number;
-    email: string;
-    username: string;
-    reservations: Reservation[];
-}
+import ReservationCard from '@/components/ReservationCard';
+import '../../../components/Profile.scss';
+import { User } from '../../../../type';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 const ProfilePage = () => {
     const { id } = useParams<{ id: string }>();
@@ -61,42 +47,57 @@ const ProfilePage = () => {
             }
         };
 
-        fetchUser();
-    }, [id]);
+        if (id) {
+            fetchUser();
+        }
+    }, []);
 
-    if (loading) return <div className="text-gray-900">Yükleniyor...</div>;
-    if (error) return <div className="text-gray-900">{error}</div>;
+    if (loading) return <div className={'text-gray-900'}>Yükleniyor...</div>;
+    if (error) return <div className={'text-gray-900'}>{error}</div>;
 
     return (
-        <div className="bg-gray-100 min-h-screen">
+        <div className={'profile-page-container'}>
             <Header />
-            <main className="p-6">
-                <h1 className="text-2xl font-bold mb-4 text-gray-900">Profil</h1>
-                {user ? (
-                    <>
-                        <p className="text-gray-900 mb-4">Email: {user.email}</p>
-                        <p className="text-gray-900 mb-4">Username: {user.username}</p>
-                        <h2 className="text-xl font-semibold mb-4 text-gray-900">Rezervasyonlarım</h2>
-                        <ul className="list-disc pl-5">
-                            {user.reservations.length === 0 ? (
-                                <p className="text-gray-900">Hiç rezervasyonunuz yok.</p>
-                            ) : (
-                                user.reservations.map((reservation, index) => (
-                                    <li key={index} className="text-gray-900 mb-2">
-                                        <div>Rezervasyon ID: {reservation.id}</div>
-                                        <div>Koltuk Numaraları: {reservation.seatInfo.join(', ')}</div>
-                                        <div>Kişi Sayısı: {reservation.numberOfPeople}</div>
-                                        <div>Fiyat: {reservation.price} TL</div>
-                                        <div>Salon Numarası: {reservation.hallNumber}</div>
-                                        <div>İptal Durumu: {reservation.cancel ? 'İptal Edildi' : 'Aktif'}</div>
-                                    </li>
-                                ))
-                            )}
-                        </ul>
-                    </>
-                ) : (
-                    <p className="text-gray-900">Kullanıcı bilgileri alınamadı.</p>
-                )}
+            <main className={'profile-main'}>
+                <h1 className={'profile-title'}>Profil</h1>
+                <ul className={'reservation-list '}>
+                    {user && (
+                        <li className={'reservation-item'}>
+                            <div className={'profile-header'}>
+                                <p className={'profile-info'}>Email: {user.email}</p>
+                                <p className={'profile-info'}>Username: {user.username}</p>
+                                <Link href={`/card-info`}>
+                                    <span className={'card-info'}> Kartlarım</span>
+                                </Link>
+                            </div>
+
+                        </li>
+                    )}
+
+                </ul>
+                <div className={'profile-reservations'}>
+                    <h2 className={'profile-title'}>Rezervasyonlarım</h2>
+                    <ul className={'reservation-list'}>
+                        {user && user.reservations.length === 0 ? (
+                            <p className={'profile-info'}>Hiç rezervasyonunuz yok.</p>
+                        ) : (
+                            user!.reservations.map((reservation, index) => (
+                                <li className={'reservation-item'} key={index}>
+                                    <ReservationCard
+                                        key={reservation.id}
+                                        reservationId={reservation.id}
+                                        seatInfo={reservation.seatInfo.join(', ')}
+                                        numberOfPeople={reservation.numberOfPeople}
+                                        isCancel={reservation.cancel}
+                                        amount={reservation.payment?.amount!}
+                                        paymentDate={reservation.payment?.paymentDate!}
+                                        userId={user!.id}
+                                    />
+                                </li>
+                            ))
+                        )}
+                    </ul>
+                </div>
             </main>
         </div>
     );

@@ -38,8 +38,6 @@ const LoginForm = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('API yanıt verileri:', data);
-
                 const userToken = data.token;
                 const userId = data.id;
 
@@ -50,6 +48,8 @@ const LoginForm = () => {
                 localStorage.setItem('user', JSON.stringify(data));
                 localStorage.setItem('userToken', userToken);
 
+                // var object1=localStorage.getItem('user',)
+                console.log(localStorage.getItem('user'))
                 // Profil sayfasına yönlendir
                 router.push(`/profile/${userId}`);
             } else {
