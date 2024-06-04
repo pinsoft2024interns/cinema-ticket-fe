@@ -1,0 +1,37 @@
+.reservation-card-container {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .reservation-card-container:hover {
+    transform: translateY(-4px);
+  }
+  
+  .reservation-info {
+    margin-bottom: 10px;
+  }
+  
+  .reservation-info strong {
+    font-weight: bold;
+  }
+  
+  .reservation-links {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .reservation-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .reservation-link:hover {
+    color: #0056b3;
+  }
+  

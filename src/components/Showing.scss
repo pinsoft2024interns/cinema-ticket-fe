@@ -1,0 +1,49 @@
+
+$primary-color: #3b82f6;
+$background-color: #f9fafb;
+$text-color: #333;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$border-radius: 0.5rem;
+
+.showing-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: $border-radius;
+  box-shadow: 0 0.5rem 1rem $shadow-color;
+  max-width: 600px;
+  margin: 2rem auto;
+  border: 1px solid #e5e7eb;
+
+  h1 {
+    color: $text-color;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    &:not(:first-of-type) {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .reservation-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: $primary-color;
+    color: white;
+    border-radius: $border-radius;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.loading, .error {
+  text-align: center;
+  color: $text-color;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}

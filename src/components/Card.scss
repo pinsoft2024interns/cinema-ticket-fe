@@ -1,0 +1,44 @@
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-info {
+    margin-bottom: 20px;
+
+    .card-info-label {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .card-info-value {
+      font-size: 16px;
+      margin: 0;
+    }
+  }
+
+  .payment-link {
+    background-color: #4caf50; /* Yeşil renk */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #388e3c; /* Koyu yeşil renk */
+    }
+  }
+}

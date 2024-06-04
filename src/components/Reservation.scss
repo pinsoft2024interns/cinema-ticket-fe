@@ -1,0 +1,64 @@
+.signup-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .bg-white {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signup-form-element {
+    margin-bottom: 1rem;
+  }
+  
+  .signup-form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .signup-form-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .signup-form-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .signup-form-button:hover {
+    background-color: #0056b3;
+    color: #ffffff; /* Buton üzerine gelindiğinde yazı rengini değiştiriyoruz */
+  }
+  

@@ -2,14 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
+import { Movie } from '../../type';
+import './MovieList.scss'
 
-interface Movie {
-    id: number; // id alanını number olarak güncelledik
-    name: string;
-    posterUrl: string;
-    trailerUrl: string;
-    description: string;
-}
+
 
 const MovieList = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -45,13 +41,13 @@ const MovieList = () => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="movie-list">
             {movies.map((movie) => (
                 <MovieCard
                     key={movie.id}
                     id={movie.id}
-                    title={movie.name}
-                    posterUrl={movie.posterUrl}
+                    name={movie.name}
+                    base64image={movie.base64image}
                     description={movie.description}
                 />
             ))}
